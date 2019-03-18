@@ -33,11 +33,11 @@ $(function() {
          */
         it('URLs are defined and not empty', function () {
             allFeeds.forEach(feed => {
-            //variable to store url feed
+            // Variable to store url feed
             const url = feed.url;
             // Check if the URL is defined
             expect(url).toBeDefined();
-            // Check the length of the URL string is > 0
+            // Check the length of the URL string is not equal 0
             expect(url.length).not.toBe(0);
             // if URL contains "http", it can include "https", too
             expect(url).toMatch("http");
@@ -49,6 +49,18 @@ $(function() {
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
+        it('names are defined and not empty', function () {
+            allFeeds.forEach(feed => {
+            // Variable to store feed name
+            const name = feed.name;
+            // Check if name is defined
+            expect(name).toBeDefined();
+            // Check length of name string not equal to 0
+            expect(name.length).not.toBe(0);
+            // Check if the feed name is a string
+            expect(name).toEqual(jasmine.any(String));
+            })
+        });
     });
 
 
