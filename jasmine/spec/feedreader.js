@@ -27,42 +27,37 @@ $(function() {
         });
 
 
-        /* TODO: Write a test that loops through each feed
+        /* A test that loops through each feed
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
-         */
-        it('URLs are defined and not empty', function () {
-            allFeeds.forEach(feed => {
-            // Variable to store url feed
-            const url = feed.url;
-            // Check if the URL is defined
-            expect(url).toBeDefined();
-            // Check the length of the URL string is not equal 0
-            expect(url.length).not.toBe(0);
-            // if URL contains "http", it can include "https", too
-            expect(url).toMatch("http");
-            })
+         */ 
+        it("URLs are defined and not empty", function() {
+            for(let feed of allFeeds) {
+                // Check if the URL is defined
+                expect(feed.url).toBeDefined();
+                // Check the length of the URL string is not equal to 0
+                expect(feed.url.length).not.toBe(0);
+                // If URL contains "http", it can include "https", too
+                expect(feed.url).toMatch("http");
+            }
         });
 
 
-        /* TODO: Write a test that loops through each feed
+        /* A test that loops through each feed
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
-        it('names are defined and not empty', function () {
-            allFeeds.forEach(feed => {
-            // Variable to store feed name
-            const name = feed.name;
-            // Check if name is defined
-            expect(name).toBeDefined();
-            // Check length of name string not equal to 0
-            expect(name.length).not.toBe(0);
-            // Check if the feed name is a string
-            expect(name).toEqual(jasmine.any(String));
-            })
-        });
+        it("names are defined and not empty", function() {
+            for(let feed of allFeeds) {
+                // Check if the URL is defined
+                expect(feed.name).toBeDefined();
+                // Check the length of the URL string is not equal to 0
+                expect(feed.name.length).not.toBe(0);
+                // Check if the feed name is a string
+                expect(feed.name).toEqual(jasmine.any(String));
+            }
+        })
     });
-
 
     /* TODO: Write a new test suite named "The menu" */
 
