@@ -33,9 +33,14 @@ $(function() {
          */
         it('URLs are defined and not empty', function () {
             allFeeds.forEach(feed => {
+            //variable to store url feed
             const url = feed.url;
+            // Check if the URL is defined
             expect(url).toBeDefined();
+            // Check the length of the URL string is > 0
             expect(url.length).not.toBe(0);
+            // if URL contains "http", it can include "https", too
+            expect(url).toMatch("http");
             })
         });
 
