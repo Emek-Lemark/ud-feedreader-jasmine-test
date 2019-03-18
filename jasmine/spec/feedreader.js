@@ -59,7 +59,7 @@ $(function() {
         })
     });
 
-    /* TODO: Write a new test suite named "The menu" */
+    /* A new test suite named "The menu" */
     describe('The menu', () => {
         const menuIcon = document.querySelector('.menu-icon-link');
 
@@ -88,7 +88,7 @@ $(function() {
          
     });
 
-        /* TODO: Write a new test suite named "Initial Entries" */
+        /* A new test suite named "Initial Entries" */
         describe('Initial Entries', () => {
             /* A test that ensures when the loadFeed
             * function is called and completes its work, there is at least
@@ -106,18 +106,43 @@ $(function() {
                 // Store element in variable entries
                 let entries = document.querySelector(".feed").getElementsByClassName("entry");
                 // Store amount of elements in variable
-                let numberOfEntries = entries.length;
+                let amountOfEntries = entries.length;
                 // Check that there are more than 0 entries
-                expect(numberOfEntries).not.toBe(0);
+                expect(amountOfEntries).not.toBe(0);
                 done();
             }));
 
         });
 
-    /* TODO: Write a new test suite named "New Feed Selection" */
+        /* TODO: Write a new test suite named "New Feed Selection" */
+        describe('New Feed Selection', () => {
+            /* A test that ensures when a new feed is loaded
+            * by the loadFeed function that the content actually changes.
+            * Remember, loadFeed() is asynchronous.
+            */
+            let firstFeed;
+                beforeEach((done) => {
+            /**
+            * Before the tests starts, the first feed loads and its contents
+            * are stored in a variable to be compared to updated feed.
+            * Then the new feed load(1) is loaded.
+            */
+                loadFeed(0, () => {
+                    let firstFeed = document.querySelector(".feed").innerHTML;
+                    loadFeed(1, () => {
+                    done();
+                    });
+                });
+            });
+            /**
+            * The innerHTML of the first feed is compared to the
+            * updated feed. The content has changed when they are not the same
+            */
+            it("gets new content", ((done) => {
+                let newFeed = document.querySelector(".feed").innerHTML;
+                expect(firstFeed).not.toBe(newFeed);
+                done();
+            }));
+        });
 
-        /* TODO: Write a test that ensures when a new feed is loaded
-         * by the loadFeed function that the content actually changes.
-         * Remember, loadFeed() is asynchronous.
-         */
 }());
