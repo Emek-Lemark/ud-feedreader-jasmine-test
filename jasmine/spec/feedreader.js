@@ -31,7 +31,7 @@ $(function() {
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */ 
-        it("URLs are defined and not empty", () => {
+        it('URLs are defined and not empty', () => {
             for(let feed of allFeeds) {
                 // Check if the URL is defined
                 expect(feed.url).toBeDefined();
@@ -47,7 +47,7 @@ $(function() {
          * in the allFeeds object and ensures it has a name defined
          * and that the name is not empty.
          */
-        it("names are defined and not empty", () => {
+        it('names are defined and not empty', () => {
             for(let feed of allFeeds) {
                 // Check if the URL is defined
                 expect(feed.name).toBeDefined();
@@ -61,7 +61,7 @@ $(function() {
 
     /* TODO: Write a new test suite named "The menu" */
     describe('The menu', () => {
-        const menuIcon = document.querySelector(".menu-icon-link");
+        const menuIcon = document.querySelector('.menu-icon-link');
 
         /* A test that ensures the menu element is
          * hidden by default. You'll have to analyze the HTML and
@@ -70,7 +70,7 @@ $(function() {
          */
         it('element hides by default', () => {
             // Check if the class name is exactly "menu-hidden"
-            expect(document.body.className).toEqual("menu-hidden");
+            expect(document.body.className).toEqual('menu-hidden');
         });
         /* A test that ensures the menu changes
           * visibility when the menu icon is clicked. This test
@@ -80,22 +80,39 @@ $(function() {
         it('changes visibility when the menu icon is clicked', () => {
             // On click the menu icon class name  is "menu-hidden"
             menuIcon.click();
-            expect(document.body.className).not.toEqual("menu-hidden");
+            expect(document.body.className).not.toEqual('menu-hidden');
             // On second click the menu icon class name "menu-hidden" should be removed           
             menuIcon.click();
-            expect(document.body.className).toEqual("menu-hidden");
+            expect(document.body.className).toEqual('menu-hidden');
         });
          
     });
 
-    /* TODO: Write a new test suite named "Initial Entries" */
+        /* TODO: Write a new test suite named "Initial Entries" */
+        describe('Initial Entries', () => {
+            /* A test that ensures when the loadFeed
+            * function is called and completes its work, there is at least
+            * a single .entry element within the .feed container.
+            * Remember, loadFeed() is asynchronous so this test will require
+            * the use of Jasmine's beforeEach and asynchronous done() function.
+            */
+            beforeEach((done) => {
+                loadFeed(0, () => {
+                    done();
+                });
+            });
+            // done is called after async function is run
+            it("should load entry element within feed container", ((done) => {
+                // Store element in variable entries
+                let entries = document.querySelector(".feed").getElementsByClassName("entry");
+                // Store amount of elements in variable
+                let numberOfEntries = entries.length;
+                // Check that there are more than 0 entries
+                expect(numberOfEntries).not.toBe(0);
+                done();
+            }));
 
-        /* TODO: Write a test that ensures when the loadFeed
-         * function is called and completes its work, there is at least
-         * a single .entry element within the .feed container.
-         * Remember, loadFeed() is asynchronous so this test will require
-         * the use of Jasmine's beforeEach and asynchronous done() function.
-         */
+        });
 
     /* TODO: Write a new test suite named "New Feed Selection" */
 
