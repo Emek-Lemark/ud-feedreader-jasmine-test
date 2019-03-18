@@ -88,61 +88,59 @@ $(function() {
          
     });
 
-        /* A new test suite named "Initial Entries" */
-        describe('Initial Entries', () => {
-            /* A test that ensures when the loadFeed
-            * function is called and completes its work, there is at least
-            * a single .entry element within the .feed container.
-            * Remember, loadFeed() is asynchronous so this test will require
-            * the use of Jasmine's beforeEach and asynchronous done() function.
-            */
-            beforeEach((done) => {
-                loadFeed(0, () => {
-                    done();
-                });
-            });
-            // done is called after async function is run
-            it("should load entry element within feed container", ((done) => {
-                // Store element in variable entries
-                let entries = document.querySelector(".feed").getElementsByClassName("entry");
-                // Store amount of elements in variable
-                let amountOfEntries = entries.length;
-                // Check that there are more than 0 entries
-                expect(amountOfEntries).not.toBe(0);
+    /* A new test suite named "Initial Entries" */
+    describe('Initial Entries', () => {
+        /* A test that ensures when the loadFeed
+        * function is called and completes its work, there is at least
+        * a single .entry element within the .feed container.
+        * Remember, loadFeed() is asynchronous so this test will require
+        * the use of Jasmine's beforeEach and asynchronous done() function.
+        */
+        beforeEach((done) => {
+            loadFeed(0, () => {
                 done();
+            });
+        });
+        // done is called after async function is run
+        it("should load entry element within feed container", ((done) => {
+            // Store element in variable entries
+            let entries = document.querySelector(".feed").getElementsByClassName("entry");
+            // Store amount of elements in variable
+            let amountOfEntries = entries.length;
+            // Check that there are more than 0 entries
+            expect(amountOfEntries).not.toBe(0);
+            done();
             }));
 
         });
 
-        /* TODO: Write a new test suite named "New Feed Selection" */
-        describe('New Feed Selection', () => {
-            /* A test that ensures when a new feed is loaded
-            * by the loadFeed function that the content actually changes.
-            * Remember, loadFeed() is asynchronous.
-            */
-            let firstFeed;
-                beforeEach((done) => {
-            /**
-            * Before the tests starts, the first feed loads and its contents
-            * are stored in a variable to be compared to updated feed.
-            * Then the new feed load(1) is loaded.
-            */
-                loadFeed(0, () => {
-                    let firstFeed = document.querySelector(".feed").innerHTML;
-                    loadFeed(1, () => {
-                    done();
-                    });
-                });
-            });
-            /**
-            * The innerHTML of the first feed is compared to the
-            * updated feed. The content has changed when they are not the same
-            */
-            it("gets new content", ((done) => {
-                let newFeed = document.querySelector(".feed").innerHTML;
-                expect(firstFeed).not.toBe(newFeed);
+    /* A new test suite named "New Feed Selection" */
+    describe('New Feed Selection', () => {
+        /* A test that ensures when a new feed is loaded
+        *  by the loadFeed function that the content actually changes.
+        *  Remember, loadFeed() is asynchronous.
+        */
+        let firstFeed;
+             beforeEach((done) => {
+        /* Before the tests starts, the first feed loads and its contents
+        *  are stored in a variable to be compared to updated feed.
+        *  Then the new feed load(1) is loaded.
+        */
+        loadFeed(0, () => {
+            let firstFeed = document.querySelector(".feed").innerHTML;
+            loadFeed(1, () => {
                 done();
-            }));
+            });
         });
+    });
+        /* The innerHTML of the first feed is compared to the
+        *  updated feed. The content has changed when they are not the same
+        */
+        it("checks if feeds are different", ((done) => {
+            let newFeed = document.querySelector(".feed").innerHTML;
+            expect(firstFeed).not.toBe(newFeed);
+            done();
+        }));
+    });
 
 }());
