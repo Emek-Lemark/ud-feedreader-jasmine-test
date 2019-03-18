@@ -15,7 +15,6 @@ In this project you are given a web-based application that reads RSS feeds. The 
 * A test that ensures the menu element is hidden by default.
 * A test that ensures the menu changes visibility when the menu icon is clicked. Two expectations: does the menu display when clicked and does it hide when clicked again?
 * A test that ensures when the `loadFeed` function is called and completes its work, there is at least a single `.entry` element within the `.feed` container.
-* A test that ensures that the `.entry-links` start with "http://" or with "https://"
 * A test that ensures when a new feed is loaded by the `loadFeed` function that the content actually changes.
 
 ### Credits
