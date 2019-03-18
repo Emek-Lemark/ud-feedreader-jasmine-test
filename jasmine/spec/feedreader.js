@@ -60,12 +60,19 @@ $(function() {
     });
 
     /* TODO: Write a new test suite named "The menu" */
+    describe('The menu', () => {
+        const menuIcon = document.querySelector(".menu-icon-link");
 
         /* TODO: Write a test that ensures the menu element is
          * hidden by default. You'll have to analyze the HTML and
          * the CSS to determine how we're performing the
          * hiding/showing of the menu element.
          */
+        it('element hides by default', () => {
+            // Check if the class name is exactly "menu-hidden"
+            expect(document.body.className).toEqual("menu-hidden");
+        });
+    });
 
          /* TODO: Write a test that ensures the menu changes
           * visibility when the menu icon is clicked. This test
