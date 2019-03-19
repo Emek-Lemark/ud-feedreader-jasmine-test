@@ -70,7 +70,7 @@ $(function() {
          */
         it('element hides by default', () => {
             // Check if the class name is exactly "menu-hidden"
-            expect(document.body.className).toEqual('menu-hidden');
+            expect(document.body.classList.contains('menu-hidden')).toBe(true);
         });
         /* A test that ensures the menu changes
           * visibility when the menu icon is clicked. This test
@@ -80,10 +80,10 @@ $(function() {
         it('changes visibility when the menu icon is clicked', () => {
             // On click the menu icon class name  is "menu-hidden"
             menuIcon.click();
-            expect(document.body.className).not.toEqual('menu-hidden');
+            expect(document.body.classList.contains('menu-hidden')).toBe(false);
             // On second click the menu icon class name "menu-hidden" should be removed           
             menuIcon.click();
-            expect(document.body.className).toEqual('menu-hidden');
+            expect(document.body.classList.contains('menu-hidden')).toBe(true);
         });
          
     });
@@ -127,7 +127,7 @@ $(function() {
         *  Then the new feed load(1) is loaded.
         */
         loadFeed(0, () => {
-            let firstFeed = document.querySelector(".feed").innerHTML;
+            firstFeed = document.querySelector(".feed").innerHTML;
             loadFeed(1, () => {
                 done();
             });
