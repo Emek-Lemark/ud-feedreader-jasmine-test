@@ -4,7 +4,7 @@
 In this project you are given a web-based application that reads RSS feeds. The original developer of this application clearly saw the value in testing, they've already included Jasmine and even started writing their first test suite! Unfortunately, they decided to move on to start their own company and we're now left with an application with an incomplete test suite. That's where you come in.
 
 ### How to run project
-* Download or clone the repo
+* Download or clone the (repo)[https://github.com/Emek-Lemark/ud-feedreader-jasmine-test.git]
 * Open index.html and see the specs at the bottom of the page
 * All tests are written on feedreader.js using jasmine
 
